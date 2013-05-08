@@ -8,7 +8,7 @@
  *         http://msdn.microsoft.com/en-us/library/aa289166%28VS.71%29.aspx
  */
 public class PrecomputedCachedEvaluation {
-  public static final int n = 43;
+	public static final int n = 43;
 	public static final int k = 5;
 	public static String exampleChromosome = "011001110000011100100001110110000000010100110010010111110111010100111111110100011001000010011001111100101011111000001010011101101110100101011001100110001101101000000011000010110100011111001110100010101011001110010001110000111101000101010111100100000101110111101101011010000011000110001101001110110110111001011001101011110100011111011010001100010100010100101011110101100010001100101111011011000010110000101001001010101000101110110111110011101100001000100011111011101001010101111010101110011010001111000110111010011011001001011001100000000100110010111111100010010001011010110011010101001110010100111001001011100100100100100010110011110000100101010111110101101000001111001111101100011111001010101000010011001110100100011100101011000011100010101110011101111000101000110001010100100111100101111011010100001100010010101011000100010101110101010111101001110000110110101001000010011110111001100101111011100001010";
 
@@ -63,10 +63,6 @@ public class PrecomputedCachedEvaluation {
 	private static boolean[] bits;
 	private static boolean[][] adj;
 
-	public static void main(String[] args) {
-		System.out.println(evaluate(exampleChromosome));
-	}
-	
 	public static int evaluate(String bitString) {
 		charBits = exampleChromosome.toCharArray();
 		bits = charToBoolean(charBits);
@@ -96,7 +92,7 @@ public class PrecomputedCachedEvaluation {
 	 * If this returns kC2 (10 for R(5, 5)), it is a red clique,
 	 * 				   0,   				 it is a blue clique
 	 */
-	static int evalEdges(int[] arr) {
+	private static int evalEdges(int[] arr) {
 		int result = 0;
 		
 		for (int i = 0; i < edges.length; i++) {
@@ -115,14 +111,14 @@ public class PrecomputedCachedEvaluation {
 	 * 
 	 * @precondition k < n
 	 */
-	public static int choose(int n, int k) {	
+	private static int choose(int n, int k) {	
 		return chooseCache[n][k];
 	}
 
 	/**
 	 * Populates ans with the mth lexicographic subset of size k from n vertices (defined at top)
 	 */
-	public static void getElement(int m, int[] ans) {
+	private static void getElement(int m, int[] ans) {
 		int a = n;
 		int b = k;
 		int x = (chooseCache[n][k] - 1) - m; // x is the "dual" of m
@@ -143,7 +139,7 @@ public class PrecomputedCachedEvaluation {
 	 * Same as above, but you can specify n and k.
 	 * I use this for getEdgePossibilities()
 	 */
-	public static int[] getElement(int m, int n, int k) {
+	private static int[] getElement(int m, int n, int k) {
 		int a = n;
 		int b = k;
 		int x = (choose(n, k) - 1) - m; // x is the "dual" of m
@@ -166,7 +162,7 @@ public class PrecomputedCachedEvaluation {
 	/**
 	 * Returns largest value v where v < a and Choose(v,b) <= x
 	 */
-	static int getLargestV(int a, int b, int x) {
+	private static int getLargestV(int a, int b, int x) {
 		int v = a - 1;
 		
 		while (chooseCache[v][b] > x) {
@@ -189,7 +185,7 @@ public class PrecomputedCachedEvaluation {
 	 * For k = 3
 	 * 
 	 */
-	public static int[][] getEdgePossibilities() {
+	private static int[][] getEdgePossibilities() {
 		int numEdges = choose(k, 2);
 		int[][] ans = new int[numEdges][2];
 		
