@@ -64,7 +64,7 @@ public class PrecomputedCachedEvaluation {
 	private static boolean[][] adj;
 
 	public static int evaluate(String bitString) {
-		charBits = exampleChromosome.toCharArray();
+		charBits = bitString.toCharArray();
 		bits = charToBoolean(charBits);
 		adj = getAdjMatrixFromBoolArray(bits);
 		
