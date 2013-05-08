@@ -47,7 +47,7 @@ public class CachedEvaluation {
 		int numCliques = 0;
 		int result = 0;
 		
-		charBits = exampleChromosome.toCharArray();
+		charBits = bitString.toCharArray();
 		bits = charToBoolean(charBits);
 		adj = getAdjMatrixFromBoolArray(bits);
 			
